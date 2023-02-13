@@ -3,7 +3,6 @@ from torch import nn
 from torch.nn import functional as F
 from abc import abstractmethod
 import torch
-import wandb
 
 def get_fp_trainer(loss_fn, root_finder, args):
     if args.trainer == 'rbp':
@@ -285,7 +284,6 @@ class EnergyEBDTrainer(FixpointTrainer):
                      0.5*(v_pred-model.decoder_module(v)).pow(2).sum() + \
                      1/self.args.alpha*self.loss_fn(v_pred, y)
 
-            wandb.log({"energy": energy.item()})
             optimizer.zero_grad()
             energy.backward()
             optimizer.step()

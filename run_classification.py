@@ -10,7 +10,7 @@ import numpy as np
 import os
 from os import path
 import argparse
-import wandb
+# import wandb
 
 def train(args, model, auxiliary_module, trainer, optimizer, scheduler, loss_fn, train_loader, device):
     for i, (X, y) in enumerate(train_loader):
@@ -99,8 +99,8 @@ def main():
     parser.add_argument('--metagrad_clip', type=float, default=-1, metavar='clip')
 
     args = parser.parse_args()
-    wandb.init(config=args, mode="offline")
-    args=wandb.config
+    # wandb.init(config=args, mode="offline")
+    # args=wandb.config
 
     if not path.exists(args.out_dir):
         os.makedirs(args.out_dir)

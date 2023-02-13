@@ -1,5 +1,5 @@
 import torch
-import wandb
+# import wandb
 import argparse
 def get_accuracy(logits, targets):
     "Return accuracy given logits and targets."
@@ -26,7 +26,7 @@ def log(log_dict, prefix="", num_step=None):
     for k in log_dict:
         new_dict[prefix+k]=log_dict[k]
         print(prefix+k, log_dict[k])
-    wandb.log(new_dict, step=num_step)
+    # wandb.log(new_dict, step=num_step)
 
 def str2bool(v):
     if isinstance(v, bool):

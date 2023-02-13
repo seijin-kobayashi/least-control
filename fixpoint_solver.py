@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 from abc import ABC, abstractmethod
-import wandb
+# import wandb
 
 def get_fp_solver(args):
     if args.solver == "vanilla":
@@ -76,8 +76,8 @@ class VanillaSolver(FixpointSolver):
         self.inner_loop_length += len(res)
         self.inner_loop_num += 1
 
-        wandb.log({"relative_residual": res[-1], "len_inner_loop": len(res),
-                   "avr_len_inner_loop": self.inner_loop_length/self.inner_loop_num})
+        # wandb.log({"relative_residual": res[-1], "len_inner_loop": len(res),
+        #            "avr_len_inner_loop": self.inner_loop_length/self.inner_loop_num})
     def _solve(self, dynamic_forward, x0):
         res = []
         for _ in range(self.max_iter):
